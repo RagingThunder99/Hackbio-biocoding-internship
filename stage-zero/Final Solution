@@ -48,7 +48,7 @@ serine01_team_members = {
     }
 }
 # The "\n" symbol creates a new line
-print("Hello everyone, meet the team members of serine_01 group in Hackbio internship.")
+print("Hello everyone, meet the team members of serine_01 group in Hackbio internship.\n")
 print("Member one:" "\n", "Name:", serine01_team_members["Member one"]["Name"], "\n", "Slack username:", serine01_team_members["Member one"]["Slack username"], "\n", "Email:", serine01_team_members["Member one"]["Email"], "\n", "Hobby:", serine01_team_members["Member one"]["Hobby"], "\n", "Country:", serine01_team_members["Member one"]["Country"], "\n", "Discipline:", serine01_team_members["Member one"]["Discipline"], "\n", "Preffered Programming Language:", serine01_team_members["Member one"]["PPL"], "\n")
 print("Member two:" "\n", "Name:", serine01_team_members["Member two"]["Name"], "\n", "Slack username:", serine01_team_members["Member two"]["Slack username"], "\n", "Email:", serine01_team_members["Member two"]["Email"], "\n", "Hobby:", serine01_team_members["Member two"]["Hobby"], "\n", "Country:", serine01_team_members["Member two"]["Country"], "\n", "Discipline:", serine01_team_members["Member two"]["Discipline"], "\n", "Preffered Programming Language:", serine01_team_members["Member two"]["PPL"], "\n")
 print("Member three:" "\n", "Name:", serine01_team_members["Member three"]["Name"], "\n", "Slack username:", serine01_team_members["Member three"]["Slack username"], "\n", "Email:", serine01_team_members["Member three"]["Email"], "\n", "Hobby:", serine01_team_members["Member three"]["Hobby"], "\n", "Country:", serine01_team_members["Member three"]["Country"], "\n", "Discipline:", serine01_team_members["Member three"]["Discipline"], "\n", "Preffered Programming Language:", serine01_team_members["Member three"]["PPL"], "\n")
@@ -58,4 +58,6 @@ print("Member five:" "\n", "Name:", serine01_team_members["Member five"]["Name"]
 #https://github.com/RagingThunder99/Hackbio-biocoding-internship/tree/main/stage-zero
 #https://github.com/Fabs247/HackBio_BioCoding_Internship/tree/main
 #https://github.com/ChaimaaNassoufi/-hackbio-biocoding-internship/tree/main/Task0
+#https://github.com/Yustina-Mayunga/HackBio_coding_Internship/blob/main/Stage-zero-task/Serine01_group
+#https://github.com/hardae/hackbio-biocoding-internship/tree/main/Stage%20zero%20task
 #https://www.linkedin.com/posts/essien-joshua-3647b6243_stage-zero-from-concept-to-code-check-activity-7293687344962953216-ipU1?utm_source=share&utm_medium=member_android&rcm=ACoAADxz6XwBnoNFl7lqbp5TVNl95vM_mDblmG8
