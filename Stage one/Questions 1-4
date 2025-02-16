@@ -113,3 +113,8 @@ twitter_name = "Fabs24"  # My Twitter username
 distance = hamming_distance(slack_name, twitter_name)
 # Show the result
 print(f"The Hamming distance between '{slack_name}' and '{twitter_name}' is: {distance}")
+#https://github.com/Yustina-Mayunga/HackBio_coding_Internship/tree/main/Stage_one_task
+#https://github.com/hardae/hackbio-biocoding-internship/tree/main/Stage%20One
+#https://github.com/Fabs247/HackBio_BioCoding_Internship_stage_1/blob/main/stage_1
+#https://github.com/RagingThunder99/Hackbio-biocoding-internship/tree/main/Stage%20one
+#
