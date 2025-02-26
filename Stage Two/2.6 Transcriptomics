@@ -1,4 +1,4 @@
-#Task Code 2.6: Transcriptomics
+#Task 2.6: Transcriptomics
 #2.6.1 Volcano Plot
 import pandas as pd
 resources = "https://gist.githubusercontent.com/stephenturner/806e31fce55a8b7175af/raw/1a507c4c3f9f1baaa3a69187223ff3d3050628d4/results.txt"
