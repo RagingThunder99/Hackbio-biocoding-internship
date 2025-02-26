@@ -3,14 +3,6 @@
 ## Description
 This script analyzes bacterial growth data by processing, visualizing, and statistically comparing the growth of wild-type (WT) and mutant (MUT) strains across three different strain types. The analysis includes data processing, growth curve visualization, statistical computations, and hypothesis testing.
 
-## Repository Links
-Below are the GitHub repositories containing implementations of this task:
-
-- **Karimat**: [GitHub Link](https://github.com/hardae/hackbio-biocoding-internship/blob/main/stage%202/stage%202%20karimah)
-- **Yustina**: [GitHub Link](https://github.com/Yustina-Mayunga/HackBio_coding_Internship/tree/main/Stage-two-task)
-- **Chaimae**: *(Link not provided)*
-- **Favour**: [GitHub Link](https://github.com/Fabs247/hackbio_biocoding_intern/blob/main/stage_2_task)
-- **Joshua**: [GitHub Link](https://github.com/RagingThunder99/Hackbio-biocoding-internship/tree/main/Stage%20Two)
 
 ## Data Processing
 - The script imports a dataset containing bacterial growth measurements.
@@ -99,4 +91,50 @@ This project is part of the HackBio Internship program.
 
 ## License
 This project is licensed under the MIT License.
+
+# Task Code 2.6: Transcriptomics
+
+## Description
+This script analyzes transcriptomic data to identify differentially expressed genes. It includes generating a volcano plot to visualize gene expression changes, identifying significantly upregulated and downregulated genes, and exploring the functions of the top affected genes.
+
+## Data Source
+- The dataset is retrieved from: [Results Dataset](https://gist.githubusercontent.com/stephenturner/806e31fce55a8b7175af/raw/1a507c4c3f9f1baaa3a69187223ff3d3050628d4/results.txt)
+
+## Analysis Steps
+### 2.6.1 Volcano Plot
+- The script reads a gene expression dataset containing log2 fold change (log2FC) and p-values.
+- It computes the -log10 of the p-value for visualization.
+- Genes are classified as:
+  - **Upregulated**: log2FC > 1 and p-value < 0.01 (plotted in red)
+  - **Downregulated**: log2FC < -1 and p-value < 0.01 (plotted in blue)
+  - **Non-significant genes**: remaining genes (plotted in gray)
+- A volcano plot is generated using `matplotlib`.
+
+### 2.6.2 Upregulated Genes
+- Genes meeting the upregulation criteria are extracted and printed.
+- The top 5 upregulated genes are displayed.
+
+### 2.6.3 Downregulated Genes
+- Genes meeting the downregulation criteria are extracted and printed.
+- The top 5 downregulated genes are displayed.
+
+### 2.6.4 Gene Functions
+- The functions of the top 5 upregulated and downregulated genes are explored using GeneCards.
+- The script automatically opens GeneCards links for these genes in a web browser.
+
+## Functional Insights
+### Upregulated Genes:
+- **EMILIN2**: Structural protein aiding vessel assembly and elasticity.
+- **POU3F4**: Transcription factor involved in neural development.
+- **LOC285954**: No information available on GeneCards.
+- **VEPH1**: Inhibits TGF-beta signaling; impacts FOXO, Hippo, and Wnt pathways.
+- **DTHD1**: Involved in apoptosis and cell signaling.
+
+### Downregulated Genes:
+- **TBX5**: Critical for heart and limb development.
+- **IFITM1**: Antiviral protein preventing viral entry; involved in cell adhesion.
+- **LAMA2**: Facilitates cell migration and extracellular matrix interactions.
+- **CAV2**: Regulates MAPK signaling, mitosis, and lipid metabolism.
+- **TNN (Tenascin-N)**: Involved in cell migration, angiogenesis, and tumorigenesis.
+
 
