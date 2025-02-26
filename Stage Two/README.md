@@ -26,6 +26,51 @@ This script analyzes bacterial growth data by processing, visualizing, and stati
 
 This project provides valuable insights into bacterial growth patterns and statistical comparison methodologies in bioinformatics.
 
+# Task 2.3: Botany and Plant Science
+
+## Overview
+This project focuses on analyzing metabolite concentration changes in wild-type and mutant plants under pesticide exposure. The dataset contains metabolite levels before and after 24-hour pesticide treatment, allowing for comparison of metabolic changes.
+
+## Dataset
+The dataset includes metabolite concentrations under different conditions:
+- **WT_DMSO_1**: Wild-type control (DMSO-treated)
+- **WT_pesticide_24h_1**: Wild-type after 24-hour pesticide exposure
+- **mutant_DMSO_1**: Mutant control (DMSO-treated)
+- **mutant_pesticide_24h_1**: Mutant after 24-hour pesticide exposure
+
+### Steps in the analysis:
+1. **Import necessary libraries**
+   - `pandas` for data manipulation
+   - `numpy` for numerical computations
+   - `matplotlib` and `seaborn` for data visualization
+2. **Create and display the dataset**
+   - The script initializes a dictionary containing metabolite concentrations under different conditions.
+   - Converts the dictionary into a Pandas DataFrame.
+   - Displays the first few rows of the dataset.
+3. **Compute metabolic changes (ΔM)**
+   - Calculates the difference in metabolite levels after pesticide exposure for both wild-type and mutant samples.
+   - Adds new columns:
+     - `ΔM_WT = WT_pesticide_24h_1 - WT_DMSO_1`
+     - `ΔM_Mutant = mutant_pesticide_24h_1 - mutant_DMSO_1`
+   - Displays the computed values.
+
+
+## Visualization (Optional)
+You can extend the script to visualize the metabolite changes using `matplotlib` or `seaborn`. For example:
+
+```python
+sns.histplot(df['ΔM_WT'], kde=True, label='Wild Type')
+sns.histplot(df['ΔM_Mutant'], kde=True, label='Mutant')
+plt.legend()
+plt.show()
+```
+
+## Future Improvements
+- Expand analysis with additional statistical tests.
+- Incorporate machine learning for pattern recognition in metabolite changes.
+- Develop interactive visualizations for better insights.
+
+
 # Task 2.4: Biochemistry and Oncology
 
 ## Description
@@ -73,24 +118,6 @@ The datasets used in this analysis are:
 - Amino acids involved in stability, flexibility, or enzymatic functions are functionally critical.
 - Mutations in these residues are key targets in protein mutation studies due to their potential role in diseases.
 
-## Dependencies
-Ensure the following Python libraries are installed before running the script:
-```bash
-pip install pandas seaborn matplotlib
-```
-
-## Usage
-Run the script using Python:
-```bash
-python script.py
-```
-This will generate the necessary visualizations and outputs for analysis.
-
-## Authors
-This project is part of the HackBio Internship program.
-
-## License
-This project is licensed under the MIT License.
 
 # Task Code 2.6: Transcriptomics
 
@@ -98,7 +125,7 @@ This project is licensed under the MIT License.
 This script analyzes transcriptomic data to identify differentially expressed genes. It includes generating a volcano plot to visualize gene expression changes, identifying significantly upregulated and downregulated genes, and exploring the functions of the top affected genes.
 
 ## Data Source
-- The dataset is retrieved from: [Results Dataset](https://gist.githubusercontent.com/stephenturner/806e31fce55a8b7175af/raw/1a507c4c3f9f1baaa3a69187223ff3d3050628d4/results.txt)
+- The dataset is retrieved from: (https://gist.githubusercontent.com/stephenturner/806e31fce55a8b7175af/raw/1a507c4c3f9f1baaa3a69187223ff3d3050628d4/results.txt)
 
 ## Analysis Steps
 ### 2.6.1 Volcano Plot
