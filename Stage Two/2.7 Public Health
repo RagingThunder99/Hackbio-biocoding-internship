@@ -1,0 +1,158 @@
+#Task 2.7: Public Health
+import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+import seaborn as sns
+from scipy import stats
+# Load the dataset
+url = "https://raw.githubusercontent.com/HackBio-Internship/public_datasets/main/R/nhanes.csv"
+df = pd.read_csv(url)
+# Display the first few rows and dataset info
+print(df.head())
+print(df.info())
+# Check for missing values
+print("Missing values per column:")
+print(df.isnull().sum())
+# Handle missing values by replacing them with 0
+df = df.fillna(0)  # You could also use df.dropna() to remove missing rows
+# List of variables to plot
+variables = ['BMI', 'Weight', 'Age']
+# Plot histograms
+for var in variables:
+    plt.figure(figsize=(6, 4))
+    sns.histplot(df[var], bins=30, kde=True, color='blue')
+    plt.title(f'Distribution of {var}')
+    plt.show()
+# Convert Weight to Pounds and plot its histogram
+df['Weight_Pounds'] = df['Weight'] * 2.2
+plt.figure(figsize=(6, 4))
+sns.histplot(df['Weight_Pounds'], bins=30, kde=True, color='green')
+plt.title('Distribution of Weight (in Pounds)')
+plt.show()
+# Mean 60-second pulse rate
+print("Mean 60-second pulse rate:", df['Pulse'].mean())
+# Range of diastolic blood pressure
+print("Range of diastolic blood pressure:", df['DiastolicBP'].min(), "-", df['DiastolicBP'].max())
+# Variance and standard deviation for income
+print("Variance of income:", df['Income'].var())
+print("Standard deviation of income:", df['Income'].std())
+# Scatter plot for Weight vs Height colored by different categories
+categories = ['Gender', 'Diabetes', 'Smoking']
+for category in categories:
+    plt.figure(figsize=(6, 4))
+    sns.scatterplot(x=df['Height'], y=df['Weight'], hue=df[category])
+    plt.title(f'Weight vs Height (by {category})')
+    plt.show()
+# Display dataset preview after all operations
+print(df.head())
+plt.figure(figsize=(15, 5))
+# Scatter plot colored by Gender
+plt.subplot(1, 3, 1)
+sns.scatterplot(x=df['Height'], y=df['Weight'], hue=df['Gender'])
+plt.title('Weight vs Height (by Gender)')
+# Scatter plot colored by Diabetes status
+plt.subplot(1, 3, 2)
+sns.scatterplot(x=df['Height'], y=df['Weight'], hue=df['Diabetes'])
+plt.title('Weight vs Height (by Diabetes)')
+# Scatter plot colored by Smoking status
+plt.subplot(1, 3, 3)
+sns.scatterplot(x=df['Height'], y=df['Weight'], hue=df['Smoking'])
+plt.title('Weight vs Height (by Smoking Status)')
+plt.tight_layout()
+plt.show()
+# T-test: Age vs Gender
+male_age = df[df['Gender'] == 'Male']['Age']
+female_age = df[df['Gender'] == 'Female']['Age']
+t_stat, p_value = stats.ttest_ind(male_age, female_age, equal_var=False)
+print("T-test: Age vs Gender -> P-Value:", p_value)
+# T-test: BMI vs Diabetes
+bmi_no_diabetes = df[df['Diabetes'] == 'No']['BMI']
+bmi_yes_diabetes = df[df['Diabetes'] == 'Yes']['BMI']
+t_stat, p_value = stats.ttest_ind(bmi_no_diabetes, bmi_yes_diabetes, equal_var=False)
+print("T-test: BMI vs Diabetes -> P-Value:", p_value)
+# T-test: Alcohol Consumption vs Relationship Status
+alcohol_single = df[df['Relationship'] == 'Single']['AlcoholYear']
+alcohol_married = df[df['Relationship'] == 'Married']['AlcoholYear']
+t_stat, p_value = stats.ttest_ind(alcohol_single, alcohol_married, equal_var=False)
+print("T-test: Alcohol Consumption vs Relationship Status -> P-Value:", p_value)import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+import seaborn as sns
+from scipy import stats
+# Load the dataset
+url = "https://raw.githubusercontent.com/HackBio-Internship/public_datasets/main/R/nhanes.csv"
+df = pd.read_csv(url)
+# Display the first few rows and dataset info
+print(df.head())
+print(df.info())
+# Check for missing values
+print("Missing values per column:")
+print(df.isnull().sum())
+# Handle missing values by replacing them with 0
+df = df.fillna(0)  # You could also use df.dropna() to remove missing rows
+# List of variables to plot
+variables = ['BMI', 'Weight', 'Age']
+# Plot histograms
+for var in variables:
+    plt.figure(figsize=(6, 4))
+    sns.histplot(df[var], bins=30, kde=True, color='blue')
+    plt.title(f'Distribution of {var}')
+    plt.show()
+# Convert Weight to Pounds and plot its histogram
+df['Weight_Pounds'] = df['Weight'] * 2.2
+plt.figure(figsize=(6, 4))
+sns.histplot(df['Weight_Pounds'], bins=30, kde=True, color='green')
+plt.title('Distribution of Weight (in Pounds)')
+plt.show()
+# Mean 60-second pulse rate
+print("Mean 60-second pulse rate:", df['Pulse'].mean())
+# Range of diastolic blood pressure
+print("Range of diastolic blood pressure:", df['DiastolicBP'].min(), "-", df['DiastolicBP'].max())
+# Variance and standard deviation for income
+print("Variance of income:", df['Income'].var())
+print("Standard deviation of income:", df['Income'].std())
+# Scatter plot for Weight vs Height colored by different categories
+categories = ['Gender', 'Diabetes', 'Smoking']
+for category in categories:
+    plt.figure(figsize=(6, 4))
+    sns.scatterplot(x=df['Height'], y=df['Weight'], hue=df[category])
+    plt.title(f'Weight vs Height (by {category})')
+    plt.show()
+# Display dataset preview after all operations
+print(df.head())
+plt.figure(figsize=(15, 5))
+# Scatter plot colored by Gender
+plt.subplot(1, 3, 1)
+sns.scatterplot(x=df['Height'], y=df['Weight'], hue=df['Gender'])
+plt.title('Weight vs Height (by Gender)')
+# Scatter plot colored by Diabetes status
+plt.subplot(1, 3, 2)
+sns.scatterplot(x=df['Height'], y=df['Weight'], hue=df['Diabetes'])
+plt.title('Weight vs Height (by Diabetes)')
+# Scatter plot colored by Smoking status
+plt.subplot(1, 3, 3)
+sns.scatterplot(x=df['Height'], y=df['Weight'], hue=df['Smoking'])
+plt.title('Weight vs Height (by Smoking Status)')
+plt.tight_layout()
+plt.show()
+# T-test: Age vs Gender
+male_age = df[df['Gender'] == 'Male']['Age']
+female_age = df[df['Gender'] == 'Female']['Age']
+t_stat, p_value = stats.ttest_ind(male_age, female_age, equal_var=False)
+print("T-test: Age vs Gender -> P-Value:", p_value)
+# T-test: BMI vs Diabetes
+bmi_no_diabetes = df[df['Diabetes'] == 'No']['BMI']
+bmi_yes_diabetes = df[df['Diabetes'] == 'Yes']['BMI']
+t_stat, p_value = stats.ttest_ind(bmi_no_diabetes, bmi_yes_diabetes, equal_var=False)
+print("T-test: BMI vs Diabetes -> P-Value:", p_value)
+# T-test: Alcohol Consumption vs Relationship Status
+alcohol_single = df[df['Relationship'] == 'Single']['AlcoholYear']
+alcohol_married = df[df['Relationship'] == 'Married']['AlcoholYear']
+t_stat, p_value = stats.ttest_ind(alcohol_single, alcohol_married, equal_var=False)
+print("T-test: Alcohol Consumption vs Relationship Status -> P-Value:", p_value)
+
+
+
+
+
+
