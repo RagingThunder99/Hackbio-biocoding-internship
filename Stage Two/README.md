@@ -34,3 +34,69 @@ Below are the GitHub repositories containing implementations of this task:
 
 This project provides valuable insights into bacterial growth patterns and statistical comparison methodologies in bioinformatics.
 
+# Task 2.4: Biochemistry and Oncology
+
+## Description
+This project involves analyzing protein mutation datasets using SIFT and FoldX scores to determine deleterious mutations. The analysis includes data merging, filtering, visualization, and interpretation of the impact of mutations on protein structure and function.
+
+## Data Sources
+The datasets used in this analysis are:
+- **SIFT Dataset**: [sift.tsv](https://raw.githubusercontent.com/HackBio-Internship/public_datasets/main/R/datasets/sift.tsv)
+- **FoldX Dataset**: [foldX.tsv](https://raw.githubusercontent.com/HackBio-Internship/public_datasets/main/R/datasets/foldX.tsv)
+
+## Methodology
+1. **Data Loading**
+   - The datasets are loaded using `pandas`, ensuring correct tab separation.
+   
+2. **Data Processing**
+   - A new column `specific_Protein_aa` is created by combining the protein and amino acid columns.
+   - The datasets are merged on `specific_Protein_aa` to analyze mutations present in both datasets.
+
+3. **Filtering Deleterious Mutations**
+   - Mutations with `sift_score < 0.05` (high probability of being deleterious) and `foldX_score > 2` (destabilizing mutations) are extracted.
+
+4. **Frequency Analysis**
+   - The frequency of the first character of amino acids involved in deleterious mutations is calculated.
+
+5. **Data Visualization**
+   - Bar charts and pie charts visualize the frequency distribution of the affected amino acids.
+
+## Visualization
+- **Bar Charts**: Show frequency of amino acids involved in deleterious mutations for SIFT and FoldX datasets.
+- **Pie Charts**: Represent proportional distribution of affected amino acids.
+
+## Structural and Functional Analysis
+### Glycine's Role:
+- **Structural Role**: Glycine, being the smallest amino acid, provides flexibility in protein structures. It is commonly found in loops and turns.
+- **Functional Role**: Essential for enzyme function and protein folding.
+- **Impact of Mutations**: Mutations replacing glycine with bulkier amino acids can hinder flexibility, leading to diseases such as osteogenesis imperfecta.
+
+## Key Findings
+- Glycine (G), Leucine (L), Alanine (A), and Proline (P) are among the most affected amino acids.
+- Hydrophobic amino acids (L, A, V, I, F, W) are crucial for protein core stability.
+- Polar/charged amino acids (R, D, Y, S, T) influence enzymatic activity and protein interactions.
+- Mutations in these amino acids can lead to protein misfolding, loss of function, or destabilization.
+
+## Conclusion
+- Amino acids involved in stability, flexibility, or enzymatic functions are functionally critical.
+- Mutations in these residues are key targets in protein mutation studies due to their potential role in diseases.
+
+## Dependencies
+Ensure the following Python libraries are installed before running the script:
+```bash
+pip install pandas seaborn matplotlib
+```
+
+## Usage
+Run the script using Python:
+```bash
+python script.py
+```
+This will generate the necessary visualizations and outputs for analysis.
+
+## Authors
+This project is part of the HackBio Internship program.
+
+## License
+This project is licensed under the MIT License.
+
