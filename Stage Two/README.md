@@ -164,4 +164,55 @@ This script analyzes transcriptomic data to identify differentially expressed ge
 - **CAV2**: Regulates MAPK signaling, mitosis, and lipid metabolism.
 - **TNN (Tenascin-N)**: Involved in cell migration, angiogenesis, and tumorigenesis.
 
+# Task 2.7: Public Health
+
+## Overview
+This project performs an exploratory data analysis (EDA) on a publicly available dataset from NHANES (National Health and Nutrition Examination Survey). The dataset is loaded from a GitHub repository and analyzed using Python libraries for data manipulation, visualization, and statistical testing.
+
+## Data Source
+The dataset is loaded from the following URL:
+[https://raw.githubusercontent.com/HackBio-Internship/public_datasets/main/R/nhanes.csv](https://raw.githubusercontent.com/HackBio-Internship/public_datasets/main/R/nhanes.csv)
+
+## Steps of Analysis
+
+### 1. Import Required Libraries
+The script imports essential libraries for:
+- Data handling (`pandas`, `numpy`)
+- Visualization (`matplotlib`, `seaborn`)
+- Statistical analysis (`scipy.stats`)
+
+### 2. Load and Explore the Dataset
+- Loads the dataset into a Pandas DataFrame.
+- Displays the first few rows (`head()`), dataset information (`info()`), and missing values summary (`isnull().sum()`).
+
+### 3. Data Cleaning
+- Fills missing values with `0` to handle null values.
+
+### 4. Distribution Analysis
+- Plots histograms and density curves for key numerical variables: **BMI, Weight, and Age**.
+- Converts Weight from kilograms to pounds and visualizes the distribution.
+
+### 5. Descriptive Statistics
+Computes and displays key statistical measures:
+- Mean pulse rate
+- Blood pressure range
+- Income variance and standard deviation
+
+### 6. Relationship Visualization
+- Uses scatter plots to visualize Height vs. Weight categorized by **Gender, Diabetes, and Smoking status**.
+- Creates a combined subplot comparison for these categories.
+
+### 7. Statistical Hypothesis Testing
+Performs t-tests to compare:
+- Age distributions between males and females.
+- BMI between diabetic and non-diabetic individuals.
+- Alcohol consumption between single and married individuals.
+
+## Execution
+Run the script in a Python environment to generate visualizations and statistical results.
+
+## Results Interpretation
+- Distribution plots help understand the spread and central tendencies of key variables.
+- Categorical scatter plots reveal possible relationships between demographic factors and health metrics.
+- Statistical tests provide insights into significant differences between groups.
 
