@@ -1,0 +1,73 @@
+import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+import seaborn as sns
+from sklearn.decomposition import PCA
+from sklearn.cluster import KMeans
+from sklearn.preprocessing import StandardScaler
+from sklearn.model_selection import train_test_split
+from sklearn.ensemble import RandomForestRegressor
+from sklearn.metrics import mean_squared_error, r2_score
+from sklearn.feature_selection import SelectKBest, f_regression
+# Load dataset
+url = "https://github.com/HackBio-Internship/2025_project_collection/raw/refs/heads/main/Python/Dataset/drug_class_struct.txt"
+df = pd.read_csv(url, sep="\t")
+# Drop non-numeric columns
+df_numeric = df.select_dtypes(include=[np.number])
+# Fill missing values
+df_numeric = df_numeric.fillna(df_numeric.mean())
+# Reduce dataset size for faster processing (train on only 1000 samples)
+df_sample = df_numeric.sample(n=1000, random_state=42)
+# Extract features and target
+X = df_sample.drop(columns=['score'])  # Features
+y = df_sample['score']  # Target (docking score)
+# Standardize features
+scaler = StandardScaler()
+X_scaled = scaler.fit_transform(X)
+# ---- Feature Selection: Keep Top 10 Most Important Features ----
+selector = SelectKBest(f_regression, k=10)  # Select top 10 best features
+X_selected = selector.fit_transform(X_scaled, y)
+# ---- Apply PCA ----
+pca = PCA(n_components=2)  # Reduced to 2D for visualization
+X_pca = pca.fit_transform(X_selected)
+# Convert to DataFrame
+df_pca = pd.DataFrame(X_pca, columns=['PC1', 'PC2'])
+df_pca['score'] = y
+# ---- PCA Plot ----
+plt.figure(figsize=(6, 4))
+sns.scatterplot(x=df_pca['PC1'], y=df_pca['PC2'], hue=df_pca['score'], palette='coolwarm')
+plt.title('Chemical Space Representation (PCA)')
+plt.xlabel('Principal Component 1')
+plt.ylabel('Principal Component 2')
+plt.show()
+# ---- K-Means Clustering ----
+kmeans = KMeans(n_clusters=3, random_state=42, n_init=10)  # Reduce clusters to 3
+df_pca['Cluster'] = kmeans.fit_predict(X_pca)
+# ---- Cluster Visualization ----
+plt.figure(figsize=(6, 4))
+sns.scatterplot(x=df_pca['PC1'], y=df_pca['PC2'], hue=df_pca['Cluster'], palette='Set1')
+plt.title('Clustered Chemical Space (PCA + K-Means)')
+plt.xlabel('PC1')
+plt.ylabel('PC2')
+plt.show()
+# ---- Analyze Docking Score per Cluster ----
+cluster_scores = df_pca.groupby('Cluster')['score'].mean().sort_values()
+print("Average Docking Score per Cluster:\n", cluster_scores)
+lowest_cluster = cluster_scores.idxmin()
+print(f"\nCluster {lowest_cluster} has the lowest average docking score.")
+# ---- Train-Test Split ----
+X_train, X_test, y_train, y_test = train_test_split(X_selected, y, test_size=0.2, random_state=42)
+# ---- Train Optimized Random Forest Model ----
+rf_model = RandomForestRegressor(
+    n_estimators=20,  # Reduce trees to 20 (faster)
+    max_depth=5,  # Limit tree depth
+    random_state=42,
+    n_jobs=-1  # Use all CPU cores
+)
+rf_model.fit(X_train, y_train)  # Train on the smaller dataset
+# ---- Predictions & Evaluation ----
+y_pred = rf_model.predict(X_test)
+# ---- Manually Compute RMSE ----
+rmse = np.sqrt(mean_squared_error(y_test, y_pred))
+print(f"R² Score: {r2_score(y_test, y_pred):.4f}")
+print(f"RMSE: {rmse:.4f}")  # RMSE calculation
