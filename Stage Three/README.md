@@ -86,3 +86,48 @@ This project performs exploratory data analysis, feature selection, dimensionali
 ## Results Interpretation
 - The lowest docking score cluster represents the most promising drug candidates.
 - The predictive model helps estimate docking scores based on molecular descriptors.
+
+
+
+# Diabetes Prediction Using Logistic Regression
+
+## Overview
+This project builds a logistic regression model to predict diabetes presence based on patient medical records. The dataset is sourced from a publicly available repository and processed using Python and the `scikit-learn` library.
+
+## Dataset
+The dataset is retrieved from:
+```
+https://raw.githubusercontent.com/HackBio-Internship/2025_project_collection/refs/heads/main/Python/Dataset/diabetes.csv
+```
+### Features:
+- Various patient attributes (e.g., glucose level, blood pressure, BMI, age, etc.)
+- Target variable (`Outcome`):
+  - `1`: Diabetes present
+  - `0`: No diabetes
+
+## Project Steps
+### 1. Load and Explore the Dataset
+- Read the CSV file into a Pandas DataFrame
+- Display basic dataset insights (first rows, structure, missing values, summary statistics)
+
+### 2. Preprocessing
+- Define `X` (features) and `y` (target variable)
+- Split data into training (80%) and testing (20%) sets
+- Standardize the feature values using `StandardScaler`
+
+### 3. Train the Logistic Regression Model
+- Initialize and train a logistic regression model (`max_iter=200`)
+- Fit the model using training data
+
+### 4. Model Evaluation
+- Predict diabetes status for test data
+- Compute model accuracy
+- Display classification report (precision, recall, F1-score, etc.)
+
+### 5. Save the Trained Model
+- Save the trained model using `joblib` for future use
+
+## Output
+- Model accuracy score
+- Classification report
+- Trained model saved as `diabetes_prediction_model.pkl`
