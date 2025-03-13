@@ -89,45 +89,60 @@ This project performs exploratory data analysis, feature selection, dimensionali
 
 
 
-# Diabetes Prediction Using Logistic Regression
+# Drug Docking Score Prediction
 
 ## Overview
-This project builds a logistic regression model to predict diabetes presence based on patient medical records. The dataset is sourced from a publicly available repository and processed using Python and the `scikit-learn` library.
+This project focuses on predicting drug docking scores using machine learning techniques. Two regression models, **Linear Regression** and **Random Forest Regression**, are used to estimate docking scores based on chemical structure features.
 
 ## Dataset
-The dataset is retrieved from:
-```
-https://raw.githubusercontent.com/HackBio-Internship/2025_project_collection/refs/heads/main/Python/Dataset/diabetes.csv
-```
-### Features:
-- Various patient attributes (e.g., glucose level, blood pressure, BMI, age, etc.)
-- Target variable (`Outcome`):
-  - `1`: Diabetes present
-  - `0`: No diabetes
+The dataset is obtained from:
+[HackBio Internship Dataset](https://github.com/HackBio-Internship/2025_project_collection/raw/refs/heads/main/Python/Dataset/drug_class_struct.txt)
 
-## Project Steps
-### 1. Load and Explore the Dataset
-- Read the CSV file into a Pandas DataFrame
-- Display basic dataset insights (first rows, structure, missing values, summary statistics)
+### Data Preprocessing
+- The dataset is loaded using `pandas`.
+- Column names are converted to lowercase for consistency.
+- Only numeric columns are used for model training, excluding non-numeric fields like `id` and `smiles`.
+- The dataset is split into **80% training** and **20% testing** sets.
 
-### 2. Preprocessing
-- Define `X` (features) and `y` (target variable)
-- Split data into training (80%) and testing (20%) sets
-- Standardize the feature values using `StandardScaler`
+## Models Used
+1. **Linear Regression**: A simple regression model to establish baseline performance.
+2. **Random Forest Regression**: An ensemble-based model for improved prediction accuracy.
 
-### 3. Train the Logistic Regression Model
-- Initialize and train a logistic regression model (`max_iter=200`)
-- Fit the model using training data
+## Implementation Steps
+### 1. Load and Preprocess Data
+- Load the dataset.
+- Extract numerical features.
+- Define the target variable (`score`).
+- Split data into training and testing sets.
 
-### 4. Model Evaluation
-- Predict diabetes status for test data
-- Compute model accuracy
-- Display classification report (precision, recall, F1-score, etc.)
+### 2. Train Regression Models
+- Train a **Linear Regression** model and evaluate its **Mean Squared Error (MSE)**.
+- Train a **Random Forest Regressor** with 100 estimators.
+- Compare the MSE values for both models.
 
-### 5. Save the Trained Model
-- Save the trained model using `joblib` for future use
+### 3. Feature Importance Analysis
+- Extract feature importance scores from the Random Forest model.
+- Visualize the top contributing features using **Seaborn** bar plots.
 
-## Output
-- Model accuracy score
-- Classification report
-- Trained model saved as `diabetes_prediction_model.pkl`
+### 4. Visualizing Model Predictions
+- Scatter plot comparing **actual vs. predicted docking scores**.
+- A reference diagonal line (`y = x`) is plotted for comparison.
+
+## Results
+- **Mean Squared Error (MSE)** values are computed for both models.
+- Feature importance analysis provides insight into the key chemical properties influencing docking scores.
+
+## Execution
+Run the Python script to train the models and generate plots
+
+## Visualization Outputs
+- **Feature Importance Plot**: Highlights key features impacting docking scores.
+- **Predicted vs Actual Scores Plot**: Evaluates the model's predictive performance.
+
+## Conclusion
+This project demonstrates the application of **machine learning models** for predicting drug docking scores, comparing **Linear Regression** and **Random Forest Regression** in terms of performance and interpretability.
+
+## Future Improvements
+- Hyperparameter tuning for Random Forest to optimize performance.
+- Feature engineering to enhance model accuracy.
+- Exploring deep learning models for improved predictions.
